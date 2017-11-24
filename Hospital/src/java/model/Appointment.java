@@ -10,5 +10,5 @@ package model;
  * @author Glover
  */
 public class Appointment {
-    
+    private int id;
 }
