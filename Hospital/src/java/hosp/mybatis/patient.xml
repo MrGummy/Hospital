@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="patient"> 
+ 
+    <resultMap id = "result" type = "hosp.model.Patient"> 
+       <result property = "id" column = "id"/> 
+       <result property = "fio" column = "fio"/> 
+       <result property = "date" column = "date"/>
+    </resultMap> 
+ 
+    <select id = "selectAll" resultMap = "result"> 
+       SELECT * FROM patient;  
+    </select> 
+
+    <select id = "selectById" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM patient WHERE id = #{id}; 
+    </select> 
+
+    <update id = "update" parameterType = "hosp.model.Patient"> 
+       UPDATE patient SET 
+        fio = #{fio}, 
+        birth_date = #{birth_date} 
+        WHERE id = #{id}; 
+    </update> 
+  
+    <delete id = "deleteById" parameterType = "int"> 
+       DELETE FROM patient WHERE id = #{id}; 
+    </delete> 
+
+    <insert id = "insert" parameterType = "hosp.model.Patient"> 
+       INSERT INTO patient (fio, birth_date)  
+       VALUES (#{fio}, #{birth_date});     
+    </insert>
+</mapper> 

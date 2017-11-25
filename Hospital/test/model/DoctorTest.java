@@ -5,6 +5,7 @@
  */
 package model;
 
+import hosp.model.Doctor;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -36,7 +37,6 @@ public class DoctorTest {
     @After
     public void tearDown() {
     }
-
  
     /**
      * Тест создания Doctor.

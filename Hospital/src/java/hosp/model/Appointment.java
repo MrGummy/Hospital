@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package hosp.model;
 
 import java.util.Date;
 import java.util.Objects;
@@ -98,5 +98,4 @@ public class Appointment {
     public String toString() {
         return "Appointment{" + "id=" + id + ", patient=" + patient + ", doctor=" + doctor + ", date=" + date + '}';
     }
-    
 }

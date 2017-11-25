@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package hosp.model;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -31,8 +31,6 @@ public class Doctor {
     Doctor(int i, String string) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
-
     
     public int getId() {
         return id;
@@ -119,6 +117,4 @@ public class Doctor {
     public String toString() {
         return "Doctor{" + "id=" + id + ", fio=" + fio + ", specialization=" + specialization + ", number_phone=" + number_phone + ", photo=" + photo + '}';
     }
-    
-    
 }
