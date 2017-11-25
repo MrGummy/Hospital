@@ -41,6 +41,7 @@ public class AppointmentTest {
     /**
      * Тест создания Appointment.
      */
+    @Test
     public void testCreateAppointment() {
         System.out.println("testCreateAppointment");
         Date date = new Date(2017,12,19);
