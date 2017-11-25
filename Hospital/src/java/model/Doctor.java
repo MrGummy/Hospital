@@ -17,19 +17,23 @@ public class Doctor {
     private int id;
     private String fio;
     private String specialization;
-    private int number_phone;
+    private String number_phone;
     private byte[] photo;
 
-    public Doctor(int id, String fio, String specialization, int number_phone, byte[] photo) {
+    public Doctor(int id, String fio, String specialization, String number_phone, byte[] photo) {
         this.id = id;
         this.fio = fio;
         this.specialization = specialization;
         this.number_phone = number_phone;
         this.photo = photo;
     }
-    
-    
 
+    Doctor(int i, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+
+    
     public int getId() {
         return id;
     }
@@ -42,7 +46,7 @@ public class Doctor {
         return specialization;
     }
 
-    public int getNumber_phone() {
+    public String getNumber_phone() {
         return number_phone;
     }
 
@@ -62,7 +66,7 @@ public class Doctor {
         this.specialization = specialization;
     }
 
-    public void setNumber_phone(int number_phone) {
+    public void setNumber_phone(String number_phone) {
         this.number_phone = number_phone;
     }
 
@@ -76,7 +80,7 @@ public class Doctor {
         hash = 23 * hash + this.id;
         hash = 23 * hash + Objects.hashCode(this.fio);
         hash = 23 * hash + Objects.hashCode(this.specialization);
-        hash = 23 * hash + this.number_phone;
+        hash = 23 * hash + Objects.hashCode(this.number_phone);
         hash = 23 * hash + Arrays.hashCode(this.photo);
         return hash;
     }
