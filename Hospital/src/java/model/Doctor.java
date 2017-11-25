@@ -5,10 +5,116 @@
  */
 package model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  *
- * @author Glover
+ * @author Glover, General-zver
  */
 public class Doctor {
+
+    private int id;
+    private String fio;
+    private String specialization;
+    private int number_phone;
+    private byte[] photo;
+
+    public Doctor(int id, String fio, String specialization, int number_phone, byte[] photo) {
+        this.id = id;
+        this.fio = fio;
+        this.specialization = specialization;
+        this.number_phone = number_phone;
+        this.photo = photo;
+    }
+    
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFio() {
+        return fio;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public int getNumber_phone() {
+        return number_phone;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFio(String fio) {
+        this.fio = fio;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public void setNumber_phone(int number_phone) {
+        this.number_phone = number_phone;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + Objects.hashCode(this.fio);
+        hash = 23 * hash + Objects.hashCode(this.specialization);
+        hash = 23 * hash + this.number_phone;
+        hash = 23 * hash + Arrays.hashCode(this.photo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Doctor other = (Doctor) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.number_phone != other.number_phone) {
+            return false;
+        }
+        if (!Objects.equals(this.fio, other.fio)) {
+            return false;
+        }
+        if (!Objects.equals(this.specialization, other.specialization)) {
+            return false;
+        }
+        if (!Arrays.equals(this.photo, other.photo)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" + "id=" + id + ", fio=" + fio + ", specialization=" + specialization + ", number_phone=" + number_phone + ", photo=" + photo + '}';
+    }
+    
     
 }
