@@ -5,6 +5,7 @@
  */
 package model;
 
+import hosp.model.Patient;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;

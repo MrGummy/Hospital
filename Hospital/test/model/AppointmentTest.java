@@ -5,6 +5,9 @@
  */
 package model;
 
+import hosp.model.Patient;
+import hosp.model.Appointment;
+import hosp.model.Doctor;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -73,7 +76,10 @@ public class AppointmentTest {
        
     }
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> 10d5749793f8b9b700bb96bfda12562f5a7d09f4
     /**
      * Тест проверки равенства/неравенства Appointment.
      */
@@ -96,6 +102,4 @@ public class AppointmentTest {
         assertFalse(appointment1.equals(appointment3)   );
         
     }
-
-
 }

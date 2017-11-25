@@ -6,7 +6,7 @@
 package DAL;
 
 import java.util.List;
-import model.Patient;
+import hosp.model.Patient;
 import org.apache.ibatis.session.SqlSession;
 /**
  *
