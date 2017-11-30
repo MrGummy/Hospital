@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 25 2017 г., 15:45
+-- Время создания: Ноя 30 2017 г., 13:15
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `hospital_db`
 --
+CREATE DATABASE `hospital_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `hospital_db`;
 
 -- --------------------------------------------------------
 
