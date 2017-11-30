@@ -76,6 +76,10 @@ public class AppointmentTest {
        
     }
     
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 10d5749793f8b9b700bb96bfda12562f5a7d09f4
     /**
      * Тест проверки равенства/неравенства Appointment.
      */
@@ -88,7 +92,7 @@ public class AppointmentTest {
         Patient patient = new Patient(1, "Краснов Валерий Филипович", date);
         Doctor doctor = new Doctor(1,"Иванов Иван Иванович", "Терапевт", "112312", photo);
         Patient patient2 = new Patient(2, "Иванова Валерия Филиповна", date);
-        Doctor doctor2 = new Doctor(2,"Сидоров Генадий Антонович", "Терапевт", "112312", photo);
+        Doctor doctor2 = new Doctor(2,"Сидоров Геннадий Антонович", "Терапевт", "112312", photo);
         
         Appointment appointment1 = new Appointment(1, patient, doctor, date);        
         Appointment appointment2 = new Appointment(1, patient, doctor, date);
