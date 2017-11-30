@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package hosp.DAL;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -23,7 +23,7 @@ public class BaseDal {
     public BaseDal() {
         Reader reader = null;
         try { 
-           reader = Resources.getResourceAsReader("");// обратить внимание "news/mybatis/config.xml"
+           reader = Resources.getResourceAsReader("hosp/mybatis/config.xml");// обратить внимание "news/mybatis/config.xml"
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (IOException ex) {
             Logger.getLogger(BaseDal.class.getName()).log(Level.SEVERE, null, ex);

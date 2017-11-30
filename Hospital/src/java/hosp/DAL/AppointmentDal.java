@@ -3,57 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package hosp.DAL;
 
+import hosp.model.Appointment;
 import java.util.List;
-import hosp.model.Doctor;
 import org.apache.ibatis.session.SqlSession;
+
 /**
  *
  * @author Евгений Мартыненко General-zver
  */
-public class DoctorDal extends BaseDal {
+public class AppointmentDal extends BaseDal {
 
-    public DoctorDal() {
+    public AppointmentDal() {
         super();
     }
-    public List<Doctor> selectAll()
+    public List<Appointment> selectAll()
     {
          SqlSession session = sqlSessionFactory.openSession(); 
-         List<Doctor> list = session.selectList("doctor.selectAll");
+         List<Appointment> list = session.selectList("appointment.selectAll");
          session.close();
          return list;
     }
     
-    public List<Doctor> selectBySpecialization()
+    public Appointment selectById(int id)
     {
          SqlSession session = sqlSessionFactory.openSession(); 
-         List<Doctor> list = session.selectList("doctor.selectBySpecialization");
+         Appointment appointment= session.selectOne("appointment.selectById",id);
          session.close();
-         return list;
+         return appointment;
     }
     
-    public Doctor selectById(int id)
+    public int update(Appointment appointment)
     {
          SqlSession session = sqlSessionFactory.openSession(); 
-         Doctor doctor= session.selectOne("doctor.selectById",id);
-         session.close();
-         return doctor;
-    }
-    
-    public int update(Doctor doctor)
-    {
-         SqlSession session = sqlSessionFactory.openSession(); 
-         int count= session.update("doctor.update",doctor);
+         int count= session.update("appointment.update",appointment);
          session.commit();
          session.close();
          return count;
     }
     
-    public int insert(Doctor doctor)
+    public int insert(Appointment appointment)
     {
          SqlSession session = sqlSessionFactory.openSession(); 
-         int count= session.insert("doctor.insert",doctor);
+         int count= session.insert("appointment.insert",appointment);
          session.commit();
          session.close();
          return count;
@@ -62,10 +55,10 @@ public class DoctorDal extends BaseDal {
     public int delete(int id)
     {
          SqlSession session = sqlSessionFactory.openSession(); 
-         int count= session.delete("doctor.deleteById",id);
+         int count= session.delete("appointment.deleteById",id);
          session.commit();
          session.close();
          return count;
     }
+    
 }
-
