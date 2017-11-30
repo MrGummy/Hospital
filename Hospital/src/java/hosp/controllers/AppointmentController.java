@@ -11,7 +11,7 @@ import hosp.model.Appointment;
 
 /**
  *
- * @author General-zver
+ * @author General-zver (Евгений Мартыненко)
  */
 public class AppointmentController {
     protected AppointmentDal appointmentDal;
@@ -44,5 +44,5 @@ public class AppointmentController {
     {
         return appointmentDal.delete(id);
     }
-            
+    
 }
