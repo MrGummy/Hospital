@@ -73,13 +73,7 @@ public class AppointmentTest {
         Date date1 = new Date(2018,1,1);
         appointment.setDate(date1);
         assertEquals(appointment.getDate(), date1);
-       
     }
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> 10d5749793f8b9b700bb96bfda12562f5a7d09f4
     /**
      * Тест проверки равенства/неравенства Appointment.
      */
