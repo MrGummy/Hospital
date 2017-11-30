@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package hosp.controllers;
 
 /**
  *
- * @author Евгений Мартыненко General-zver
+ * @author Glover
  */
-public class AppointmentDal extends BaseDal {
-
-    public AppointmentDal() {
-        super();
-    }
-    
+public class AppointmentController {
     
 }
