@@ -10,7 +10,7 @@ import hosp.model.Doctor;
 import org.apache.ibatis.session.SqlSession;
 /**
  *
- * @author Евгений Мартыненко General-zver
+ * @author Glover
  */
 public class DoctorDal extends BaseDal {
 
