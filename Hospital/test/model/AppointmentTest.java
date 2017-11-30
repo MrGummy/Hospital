@@ -46,7 +46,7 @@ public class AppointmentTest {
      */
     @Test
     public void testCreateAppointment() {
-        System.out.println("testCreateAppointment");
+        System.out.println("test Appointment createAppointment");
         Date date = new Date(2017,12,19);
         byte[] photo = new byte[1024];
         
@@ -81,7 +81,7 @@ public class AppointmentTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
+        System.out.println("test Appointment equals");
         byte[] photo = new byte[1024];
         Date date = new Date(2017,12,19);
         Date date1 = new Date(2018,1,1);

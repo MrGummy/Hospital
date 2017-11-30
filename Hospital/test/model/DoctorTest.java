@@ -43,7 +43,7 @@ public class DoctorTest {
      */
     @Test
     public void testCreateDoctor() {
-        System.out.println("testCreateDoctor");
+        System.out.println("test Doctor createDoctor");
         byte[] photo = new byte[1024];
         Doctor doctor = new Doctor(1,"Ivanov Ivan Ioanovich", "Terapevt", "112312", photo);
         assertEquals(doctor.getId(), 1);
@@ -73,7 +73,7 @@ public class DoctorTest {
      */
     @Test
     public void testEquals() {
-        System.out.println("equals");
+        System.out.println("test Doctor equals");
         byte[] photo = new byte[1024];
         Doctor doctor1 = new Doctor(1,"Иванов Иван Иванович", "Терапевт", "112312", photo);        
         Doctor doctor2 = new Doctor(1,"Иванов Иван Иванович", "Терапевт", "112312", photo);
