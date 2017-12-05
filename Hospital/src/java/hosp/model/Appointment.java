@@ -17,6 +17,9 @@ public class Appointment {
     private Patient patient;
     private Doctor doctor;
     private Date date;
+    
+    public Appointment() {
+    }
 
     public Appointment(int id, Patient patient, Doctor doctor, Date date) {
         this.id = id;

@@ -19,6 +19,9 @@ public class Doctor {
     private String specialization;
     private String number_phone;
     private byte[] photo;
+    
+    public Doctor() {
+    }
 
     public Doctor(int id, String fio, String specialization, String number_phone, byte[] photo) {
         this.id = id;

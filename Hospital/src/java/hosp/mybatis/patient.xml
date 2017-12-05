@@ -6,7 +6,7 @@
     <resultMap id = "result" type = "hosp.model.Patient"> 
        <result property = "id" column = "id"/> 
        <result property = "fio" column = "fio"/> 
-       <result property = "date" column = "date"/>
+       <result property = "birth_date" column = "birth_date"/>
     </resultMap> 
  
     <select id = "selectAll" resultMap = "result"> 

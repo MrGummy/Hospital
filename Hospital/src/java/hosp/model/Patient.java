@@ -18,6 +18,9 @@ public class Patient
     private String fio;
     private Date birth_date;
     
+    public Patient() {
+    }
+    
     public Patient(int id, String fio, Date birth_date) {
         this.id = id;
         this.fio = fio;
