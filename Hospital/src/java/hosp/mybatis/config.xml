@@ -21,6 +21,7 @@
     <mapper resource="hosp/mybatis/patient.xml"/> 
     <mapper resource="hosp/mybatis/doctor.xml"/> 
     <mapper resource="hosp/mybatis/appointment.xml"/> 
+    <mapper resource="hosp/mybatis/state.xml"/>
   </mappers> 
   
 </configuration>
