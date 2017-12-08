@@ -28,6 +28,7 @@ public class PatientDalTest {
         PatientDal instance = new PatientDal();
         List<Patient> result = instance.selectAll();
         assertTrue(result!=null && result.size()>0);
+        System.out.println(result);
     }
 
     /**
