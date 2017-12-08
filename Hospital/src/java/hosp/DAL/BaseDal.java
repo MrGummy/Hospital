@@ -23,7 +23,7 @@ public class BaseDal {
     public BaseDal() {
         Reader reader = null;
         try { 
-           reader = Resources.getResourceAsReader("hosp/mybatis/config.xml");// обратить внимание "news/mybatis/config.xml"
+           reader = Resources.getResourceAsReader("hosp/mybatis/config.xml");// обратить внимание "hosp/mybatis/config.xml"
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (IOException ex) {
             Logger.getLogger(BaseDal.class.getName()).log(Level.SEVERE, null, ex);
