@@ -25,10 +25,10 @@ public class DoctorDal extends BaseDal {
          return list;
     }
     
-    public List<Doctor> selectBySpecialization()
+    public List<Doctor> selectBySpecialization(String specialization)
     {
          SqlSession session = sqlSessionFactory.openSession(); 
-         List<Doctor> list = session.selectList("doctor.selectBySpecialization");
+         List<Doctor> list = session.selectList("doctor.selectBySpecialization",specialization);
          session.close();
          return list;
     }

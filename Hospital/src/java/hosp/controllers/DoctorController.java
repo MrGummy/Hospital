@@ -26,9 +26,9 @@ public class DoctorController
         return doctorDal.selectAll();
     }
     
-    public List<Doctor> getDoctorBySpecialization()
+    public List<Doctor> getDoctorBySpecialization(String specialization)
     {
-        return doctorDal.selectBySpecialization();
+        return doctorDal.selectBySpecialization(specialization);
     }
     
     public Doctor getDoctor(int id)
