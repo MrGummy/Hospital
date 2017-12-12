@@ -5,9 +5,6 @@
  */
 package hosp.model;
 
-import hosp.model.Patient;
-import hosp.model.Appointment;
-import hosp.model.Doctor;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Евгений Мартыненко General-zver
+ * @author Евгений Мартыненко L
  */
 public class AppointmentTest {
     
@@ -41,59 +38,47 @@ public class AppointmentTest {
     public void tearDown() {
     }
 
-    /**
-     * Тест создания Appointment.
-     */
-    @Test
+      @Test
     public void testCreateAppointment() {
         System.out.println("test Appointment createAppointment");
-        Date date = new Date(2017,12,19);
-        byte[] photo = new byte[1024];
-        
-        Patient patient = new Patient(1, "Краснов Валерий Филипович", date);
-        Doctor doctor = new Doctor(1,"Иванов Иван Иванович", "Терапевт", "112312", photo);
-        
-        Appointment appointment = new Appointment(1, patient, doctor, date);
+        Date date = new Date(2017, 9, 26);
+        Appointment appointment = new Appointment(1, 1, 1,date, 1);
         assertEquals(appointment.getId(), 1);
-        assertEquals(appointment.getPatient(), patient);
-        assertEquals(appointment.getDoctor(), doctor);
+        assertEquals(appointment.getPatient_id(), 1);
+        assertEquals(appointment.getDoctor_id(), 1);
         assertEquals(appointment.getDate(), date);
+        assertEquals(appointment.getState_id(), 1);
         
         appointment.setId(2);
         assertEquals(appointment.getId(), 2);
         
-        Patient patient2 = new Patient(2, "Иванова Валерия Филиповна", date);
-        appointment.setPatient(patient2);
-        assertEquals(appointment.getPatient(), patient2);
+        appointment.setPatient_id(2);
+        assertEquals(appointment.getPatient_id(), 2);
         
-        Doctor doctor2 = new Doctor(2,"Сидоров Генадий Антонович", "Терапевт", "112312", photo);
-        appointment.setDoctor(doctor2);
-        assertEquals(appointment.getDoctor(), doctor2);
+        appointment.setDoctor_id(2);
+        assertEquals(appointment.getDoctor_id(), 2);
         
-        Date date1 = new Date(2018,1,1);
-        appointment.setDate(date1);
-        assertEquals(appointment.getDate(), date1);
+        date = new Date(2018, 1, 1);
+        appointment.setDate(date);
+        assertEquals(appointment.getDate(), date);
+        
+        appointment.setState_id(2);
+        assertEquals(appointment.getState_id(), 2);
     }
+
     /**
      * Тест проверки равенства/неравенства Appointment.
      */
     @Test
     public void testEquals() {
         System.out.println("test Appointment equals");
-        byte[] photo = new byte[1024];
-        Date date = new Date(2017,12,19);
-        Date date1 = new Date(2018,1,1);
-        Patient patient = new Patient(1, "Краснов Валерий Филипович", date);
-        Doctor doctor = new Doctor(1,"Иванов Иван Иванович", "Терапевт", "112312", photo);
-        Patient patient2 = new Patient(2, "Иванова Валерия Филиповна", date);
-        Doctor doctor2 = new Doctor(2,"Сидоров Геннадий Антонович", "Терапевт", "112312", photo);
-        
-        Appointment appointment1 = new Appointment(1, patient, doctor, date);        
-        Appointment appointment2 = new Appointment(1, patient, doctor, date);
-        Appointment appointment3 = new Appointment(2, patient2, doctor2, date1);
-        
+        Date date = new Date(2017, 9, 26);
+        Appointment appointment1 = new Appointment(1, 1, 1, date, 1);        
+        Appointment appointment2 = new Appointment(1, 1, 1, date, 1);
+        Appointment appointment3 = new Appointment(2, 2, 1, date, 1);
+
         assertTrue( appointment1.equals(appointment2)   );
         assertFalse(appointment1.equals(appointment3)   );
-        
     }
+
 }

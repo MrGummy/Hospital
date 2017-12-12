@@ -5,11 +5,12 @@
  
     <resultMap id = "result" type = "hosp.model.Appointment"> 
        <result property = "id" column = "id"/> 
-       <result property = "patient_id" column = "patient_id"/> 
+       <result property = "patient_id" column = "patient_id"/>
        <result property = "doctor_id" column = "doctor_id"/>
        <result property = "date" column = "date"/>
+       <result property = "state_id" column = "state_id"/>
     </resultMap> 
- 
+    
     <select id = "selectAll" resultMap = "result"> 
        SELECT * FROM appointment;  
     </select> 
@@ -18,19 +19,18 @@
        SELECT * FROM appointment WHERE id = #{id}; 
     </select> 
     
-    <select id = "selectByPatient" parameterType = "int" resultMap = "result"> 
-       SELECT * FROM appointment WHERE patient_id = #{id}; 
+   <select id = "selectPatient" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM patient WHERE id = #{patient_id}; 
     </select> 
     
-    <select id = "selectByDoctor" parameterType = "int" resultMap = "result"> 
-       SELECT * FROM appointment WHERE doctor_id = #{id}; 
+    <select id = "selectDoctor" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM doctor WHERE id = #{doctor_id}; 
     </select> 
 
     <update id = "update" parameterType = "hosp.model.Appointment"> 
        UPDATE appointment SET 
-        patient_id = #{patient_id}, 
-        doctor_id = #{doctor_id},
-        date = #{date}
+        date = #{date},
+        state = #{state}
         WHERE id = #{id}; 
     </update> 
   
@@ -39,7 +39,7 @@
     </delete> 
 
     <insert id = "insert" parameterType = "hosp.model.Appointment"> 
-       INSERT INTO appointment (patient_id, doctor_id, date)  
-       VALUES (#{patient_id}, #{doctor_id}, #{date});     
+       INSERT INTO appointment (date, state)  
+       VALUES (#{date}, #{state});     
     </insert>
 </mapper> 
