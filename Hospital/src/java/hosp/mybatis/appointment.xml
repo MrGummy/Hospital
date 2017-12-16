@@ -30,7 +30,7 @@
     <update id = "update" parameterType = "hosp.model.Appointment"> 
        UPDATE appointment SET 
         date = #{date},
-        state = #{state}
+        state_id = #{state_id}
         WHERE id = #{id}; 
     </update> 
   
@@ -39,7 +39,7 @@
     </delete> 
 
     <insert id = "insert" parameterType = "hosp.model.Appointment"> 
-       INSERT INTO appointment (date, state)  
-       VALUES (#{date}, #{state});     
+       INSERT INTO appointment (patient_id, doctor_id, date, state_id)  
+       VALUES (#{patient_id}, #{doctor_id}, #{date}, #{state_id});     
     </insert>
 </mapper> 

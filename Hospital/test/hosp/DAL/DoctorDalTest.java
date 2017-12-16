@@ -6,6 +6,7 @@
 package hosp.DAL;
 
 import hosp.model.Doctor;
+import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -56,5 +57,42 @@ public class DoctorDalTest {
         assertTrue(result!=null && result.getId()==id);
         System.out.println(result);
     }
+    
+    /**
+     * Test of insert method, of class DoctorDal.
+     */
+    @Test
+    public void testInsert() {
+        System.out.println("DoctorDal insert");
+        byte[] photo = new byte[1024];
+        Doctor doctor = new Doctor(3, "Гусаров Роман Миронович", "Хирург", "89135734827", photo);
+        DoctorDal instance = new DoctorDal();
+        int result = instance.update(doctor);
+        assertTrue(result!=0 && result==1);
+    }
+    
+    /**
+     * Test of update method, of class DoctorDal.
+     */
+    @Test
+    public void testUpdate() {
+        System.out.println("DoctorDal update");
+        byte[] photo = new byte[1024];
+        Doctor doctor = new Doctor(3, "Гусаров Роман Миронович", "Хирург", "89503743625", photo);
+        DoctorDal instance = new DoctorDal();
+        int result = instance.insert(doctor);
+        assertTrue(result!=0 && result==1);
+    }
 
+    /**
+     * Test of delete method, of class DoctorDal.
+     */
+    @Test
+    public void testDelete() {
+        System.out.println("DoctorDal deleteById");
+        int id = 3;
+        DoctorDal instance = new DoctorDal();
+        int result = instance.delete(id);
+        assertTrue(result!=0 && result==1);
+    }
 }

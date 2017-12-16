@@ -7,6 +7,7 @@ package hosp.DAL;
 
 import java.util.List;
 import hosp.model.Patient;
+import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -44,27 +45,40 @@ public class PatientDalTest {
     }
 
     /**
-     * Test of update method, of class PatientDal.
-     *
-    @Test
-    public void testUpdate() {
-        assertTrue(false);
-    }
-
-    /**
      * Test of insert method, of class PatientDal.
-     *
+     */
     @Test
     public void testInsert() {
-        assertTrue(false);
+        System.out.println("PatientDal insert");
+        Date date = new Date(1974, 11, 30);
+        Patient patient = new Patient(8 ,"Меньшов Гавриил Парфёнович", date);
+        PatientDal instance = new PatientDal();
+        int result = instance.update(patient);
+        assertTrue(result!=0 && result==1);
+    }
+    
+    /**
+     * Test of update method, of class PatientDal.
+     */
+    @Test
+    public void testUpdate() {
+        System.out.println("PatientDal update");
+        Date date = new Date(1974, 11, 30);
+        Patient patient = new Patient(8, "Меньшов Гавриил Прокофьевич", date);
+        PatientDal instance = new PatientDal();
+        int result = instance.insert(patient);
+        assertTrue(result!=0 && result==1);
     }
 
     /**
      * Test of delete method, of class PatientDal.
-     *
+     */
     @Test
     public void testDelete() {
-        assertTrue(false);
+        System.out.println("PatientDal deleteById");
+        int id = 8;
+        PatientDal instance = new PatientDal();
+        int result = instance.delete(id);
+        assertTrue(result!=0 && result==1);
     }
-    */
 }
