@@ -29,6 +29,11 @@ public class AppointmentController {
     {
         return appointmentDal.selectById(id);
     }
+    
+    public List<Appointment> getAppointmentByDoctorId(int doctor_id)
+    {
+        return appointmentDal.selectByDoctorId(doctor_id);
+    }
      
     public int insertAppointment(Appointment appointment)
     {

@@ -50,7 +50,7 @@ public class AppointmentDalTest {
     public void testInsert() {
         System.out.println("AppointmentDal insert");
         Date date = new Date(2017, 7, 15);
-        Appointment appointment = new Appointment(6, 5, 1, date, 1);
+        Appointment appointment = new Appointment(0, 5, 1, date, 1);
         AppointmentDal instance = new AppointmentDal();
         int result = instance.update(appointment);
         assertTrue(result!=0 && result==1);
@@ -63,7 +63,7 @@ public class AppointmentDalTest {
     public void testUpdate() {
         System.out.println("AppointmentDal update");
         Date date = new Date(2017, 7, 15);
-        Appointment appointment = new Appointment(6, 5, 1, date, 2);
+        Appointment appointment = new Appointment(0, 5, 1, date, 2);
         AppointmentDal instance = new AppointmentDal();
         int result = instance.insert(appointment);
         assertTrue(result!=0 && result==1);
@@ -75,7 +75,7 @@ public class AppointmentDalTest {
     @Test
     public void testDelete() {
         System.out.println("AppointmentDal deleteById");
-        int id = 6;
+        int id = 0;
         AppointmentDal instance = new AppointmentDal();
         int result = instance.delete(id);
         assertTrue(result!=0 && result==1);

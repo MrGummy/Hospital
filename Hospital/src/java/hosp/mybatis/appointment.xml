@@ -19,7 +19,11 @@
        SELECT * FROM appointment WHERE id = #{id}; 
     </select> 
     
-   <select id = "selectPatient" parameterType = "int" resultMap = "result"> 
+    <select id = "selectByDoctorId" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM appointment WHERE doctor_id = #{doctor_id}; 
+    </select> 
+    
+    <select id = "selectPatient" parameterType = "int" resultMap = "result"> 
        SELECT * FROM patient WHERE id = #{patient_id}; 
     </select> 
     

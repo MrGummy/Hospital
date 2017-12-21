@@ -5,37 +5,23 @@
         <title>Hospital</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="lib/css/bootstrap.min.css" rel="stylesheet">
-        <link href="lib/css/style.css" rel="stylesheet">
-        <link href="navigator.css" rel="stylesheet"/>
-        <link href="doctorContainer.css" rel="stylesheet"/>
-        <link href="preloader.css" rel="stylesheet"/>
-        <script src="controllers/DoctorController.js"></script>
-        <script src="controllers/AppointmentController.js"></script>
-        <script src="service/DoctorService.js"></script>
-        <script src="service/AppointmentService.js"></script>
-        <script src="service/StateService.js"></script>
+        <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../lib/css/style.css" rel="stylesheet">
+        <link href="../navigator.css" rel="stylesheet"/>
+        <link href="../doctorContainer.css" rel="stylesheet"/>
+        <link href="doctor.css" rel="stylesheet"/>
+        <link href="../preloader.css" rel="stylesheet"/>
+        <script src="../controllers/DoctorController.js"></script>
+        <script src="../controllers/AppointmentController.js"></script>
+        <script src="../service/DoctorService.js"></script>
+        <script src="../service/AppointmentService.js"></script>
+        <script src="../service/StateService.js"></script>
         <script>
             function doctorClick(id) {
                 document.location.href = "/Hospital/view/doctor.html?id="+id;
             }
-            function makeAppointment(doctor_id) {
-                document.location.href = "/Hospital/view/appointment.html?id="+doctor_id;
-            }
         </script>
         <style>
-            h4 {
-                display: inline-block;
-                padding: 10px;
-                background: #B9121B;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-            }
-            .full-screen {
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
             .nb { 
                 position: fixed;
                 opacity: 0.9;
@@ -48,11 +34,29 @@
                 background-color: #009999;
                 border: none;
                 border-radius: 0;
-            }   
+            }               
             .label { 
                 text-align: center;
                 font-size: 3em;
                 background-color: #009999;
+            }
+            *[role="form"] {
+                max-width: 600px;
+                padding: 15px;
+                margin: 0 auto;
+                margin-bottom: 50px;
+                margin-top: 20px;
+                background-color: #eee;
+                opacity: 0.9;
+                border-radius: 0.3em;
+            }
+
+            *[role="form"] h2 {
+                margin-left: 5em;
+                margin-bottom: 1em;
+            }
+            label {
+                font-size: 1em;
             }
             #page-preloader {
                 position: fixed;
@@ -66,7 +70,7 @@
         </style>    
     </head>
     
-    <body background="images/bgIndex.jpg" style="background-attachment: fixed; background-size: 100%;">
+    <body background="../images/bgAppointment.jpg" style="background-attachment: fixed; background-size: 100%;">
         <div id="page-preloader">
             <div class="spinner container">
                  <div class="row">
@@ -80,7 +84,7 @@
                      </div>
                  </div>
              </div>
-        </div>
+        </div>       
         <!-- MENU -->
         <nav class="navbar navbar-default nb" role="navigation">
           <div class="container-fluid">
@@ -89,14 +93,14 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                   </button>
-              <a class="navbar-brand" href="#">EUROmed</a>
+              <a class="navbar-brand" href="../index.html">EUROmed</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                  <li class="active"><a href="#doctors">Doctors</a></li>
-                <li><a href="/Hospital/view/appointment.html">Appointments</a></li>
+                  <li class="active"><a href="../index.html#doctors">Doctors</a></li>
+                <li><a href="#">Appointments</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">About us <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -116,65 +120,6 @@
           </div><!-- /.container-fluid -->
         </nav>
         
-        <!-- SLIDER -->
-        <div id="mycarousel" class="carousel slide" data-ride="carousel" style="z-index: 1; margin-top: 0px;">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#mycarousel" data-slide-to="1"></li>
-              <li data-target="#mycarousel" data-slide-to="2"></li>
-              <li data-target="#mycarousel" data-slide-to="3"></li>
-              <li data-target="#mycarousel" data-slide-to="4"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item">
-                  <img src="images/image1.jpg" data-color="lightblue" alt="First Image">
-                  <div class="carousel-caption">
-                      <h4>We care about your health, not about our pocket</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image2.jpg" data-color="firebrick" alt="Second Image">
-                  <div class="carousel-caption">
-                      <h4>We have the best technologies</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image3.jpg" data-color="violet" alt="Third Image">
-                  <div class="carousel-caption">
-                      <h4>We have the best specialists</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image4.jpg" data-color="lightgreen" alt="Fourth Image">
-                  <div class="carousel-caption">
-                      <h4>Only respect for patients</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image5.jpg" data-color="tomato" alt="Fifth Image">
-                  <div class="carousel-caption">
-                      <h4>Only original medicines</h4>
-                  </div>
-              </div>
-            </div>
-
-            <!-- Controls--> 
-            <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <div id="doctors" style="margin-top: 50px; text-align: center; width: 100%;">
-            <p></p>
-            <p class="label" align="center">Our doctors</p>  
-        </div>
         <div class="main" style="margin-top: 0;">
             <!-- NAVIGATOR -->
             <div id="wrapper">
@@ -189,10 +134,10 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#doctors">Doctors</a>
+                            <a href="../index.html#doctors">Doctors</a>
                         </li>
                         <li>
-                            <a href="/Hospital/view/appointment.html">Appointments</a>
+                            <a href="#">Appointments</a>
                         </li>
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">About us <span class="caret"></span></a>
@@ -205,7 +150,9 @@
                     </ul>
                 </nav>
                 <!-- /#sidebar-wrapper -->
-
+                
+                <!--img src="../images/appointment.jpg" style="position: absolute; top: 0; left: 0; width: 100%;"/-->
+                
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
                     <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
@@ -216,9 +163,53 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-lg-offset-0">
-                                
-                                <div id="doctor" class="col-lg-12 "></div> 
-                                
+                                <div class="container">
+                                    <div id="fancy-list-group">
+                                      <div class="row">
+                                        <div>                                          
+                                            <form class="form-horizontal" role="form">
+                                                <h2><b>Appointment Form</b></h2>
+                                                <div class="form-group" style="margin-top: 20px;">
+                                                    <label for="firstName" class="col-sm-4 control-label">Full Name</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="birthDate" class="col-sm-4 control-label">Date of Birth</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" id="birthDate" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="country" class="col-sm-4 control-label">Doctor</label>
+                                                    <div class="col-sm-6">
+                                                        <select id="doctor" class='form-control'></select>
+                                                    </div>
+                                                </div> <!-- /.form-group -->
+                                                <div class="form-group">
+                                                    <label for="appointmentDate" class="col-sm-4 control-label">Date of Appointment</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" id="appointmentDate" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-6 col-sm-offset-4">
+                                                        <div class='btn btn-md btn-warning'><a href='#appointment' style='color: #fff; text-decoration: none;'><i class='fa fa-star-o' aria-hidden='true'></i>Make an appointment</a> </div>
+                                                    </div>
+                                                </div>
+                                            </form> <!-- /form -->
+                                        </div>
+                                         
+                                            <div id="appointments" style="color: #fff; margin-bottom: 50px; text-align: center; width: 100%;">
+                                                <p></p>
+                                                <p class="label" align="center">Appointments</p>  
+                                            </div>
+                                          
+                                        <div id="appointment" class="list-group"></div>
+                                      </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -230,35 +221,8 @@
         </div>
         
         <!--  ================================================== -->
-        <script src="lib/js/jquery.min.js"></script>
-        <script src="lib/js/bootstrap.min.js"></script>
-        <script>
-            var $item = $('.carousel .item'); 
-            var $wHeight = $(window).height();
-            $item.eq(0).addClass('active');
-            $item.height($wHeight); 
-            $item.addClass('full-screen');
-
-            $('.carousel img').each(function() {
-              var $src = $(this).attr('src');
-              var $color = $(this).attr('data-color');
-              $(this).parent().css({
-                'background-image' : 'url(' + $src + ')',
-                'background-color' : $color
-              });
-              $(this).remove();
-            });
-
-            $(window).on('resize', function (){
-              $wHeight = $(window).height();
-              $item.height($wHeight);
-            });
-
-            $('.carousel').carousel({
-              interval: 6000,
-              pause: "false"
-            });
-        </script>
+        <script src="../lib/js/jquery.min.js"></script>
+        <script src="../lib/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function () {
               var trigger = $('.hamburger'),
@@ -290,6 +254,11 @@
             });
         </script>
         <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+        <script>
             $(window).on('load', function () {
                 var $preloader = $('#page-preloader'),
                     $spinner   = $preloader.find('.spinner');
@@ -297,11 +266,15 @@
                 $preloader.delay(350).fadeOut('slow');
             });
         </script>
-        <script>                       
+        <script>
             window.onload = function ()
             {
-                var controller = new DoctorController();
-                controller.getAllDoctorView();
+                var url = new URL(document.location.href);
+                var doctor_id = url.searchParams.get("id");
+                
+                var controller = new AppointmentController();
+                controller.getAllAppointmentView();
+                controller.getAllDoctorView(doctor_id);
             };
         </script>
     </body>

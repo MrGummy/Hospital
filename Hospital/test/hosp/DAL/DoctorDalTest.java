@@ -65,7 +65,7 @@ public class DoctorDalTest {
     public void testInsert() {
         System.out.println("DoctorDal insert");
         byte[] photo = new byte[1024];
-        Doctor doctor = new Doctor(3, "Гусаров Роман Миронович", "Хирург", "89135734827", photo);
+        Doctor doctor = new Doctor(0, "Гусаров Роман Миронович", "Хирург", "89135734827", photo);
         DoctorDal instance = new DoctorDal();
         int result = instance.update(doctor);
         assertTrue(result!=0 && result==1);
@@ -78,7 +78,7 @@ public class DoctorDalTest {
     public void testUpdate() {
         System.out.println("DoctorDal update");
         byte[] photo = new byte[1024];
-        Doctor doctor = new Doctor(3, "Гусаров Роман Миронович", "Хирург", "89503743625", photo);
+        Doctor doctor = new Doctor(0, "Гусаров Роман Миронович", "Хирург", "89503743625", photo);
         DoctorDal instance = new DoctorDal();
         int result = instance.insert(doctor);
         assertTrue(result!=0 && result==1);
@@ -90,7 +90,7 @@ public class DoctorDalTest {
     @Test
     public void testDelete() {
         System.out.println("DoctorDal deleteById");
-        int id = 3;
+        int id = 0;
         DoctorDal instance = new DoctorDal();
         int result = instance.delete(id);
         assertTrue(result!=0 && result==1);

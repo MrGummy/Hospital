@@ -5,37 +5,23 @@
         <title>Hospital</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="lib/css/bootstrap.min.css" rel="stylesheet">
-        <link href="lib/css/style.css" rel="stylesheet">
-        <link href="navigator.css" rel="stylesheet"/>
-        <link href="doctorContainer.css" rel="stylesheet"/>
-        <link href="preloader.css" rel="stylesheet"/>
-        <script src="controllers/DoctorController.js"></script>
-        <script src="controllers/AppointmentController.js"></script>
-        <script src="service/DoctorService.js"></script>
-        <script src="service/AppointmentService.js"></script>
-        <script src="service/StateService.js"></script>
-        <script>
-            function doctorClick(id) {
-                document.location.href = "/Hospital/view/doctor.html?id="+id;
-            }
+        <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../lib/css/style.css" rel="stylesheet">
+        <link href="../navigator.css" rel="stylesheet"/>
+        <link href="../doctorContainer.css" rel="stylesheet"/>
+        <link href="doctor.css" rel="stylesheet"/>
+        <link href="../preloader.css" rel="stylesheet"/>
+        <script src="../controllers/DoctorController.js"></script>
+        <script src="../controllers/AppointmentController.js"></script>
+        <script src="../service/DoctorService.js"></script>
+        <script src="../service/AppointmentService.js"></script>
+        <script src="../service/StateService.js"></script>
+        <script>            
             function makeAppointment(doctor_id) {
                 document.location.href = "/Hospital/view/appointment.html?id="+doctor_id;
             }
         </script>
         <style>
-            h4 {
-                display: inline-block;
-                padding: 10px;
-                background: #B9121B;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-            }
-            .full-screen {
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
             .nb { 
                 position: fixed;
                 opacity: 0.9;
@@ -48,11 +34,16 @@
                 background-color: #009999;
                 border: none;
                 border-radius: 0;
-            }   
-            .label { 
-                text-align: center;
-                font-size: 3em;
-                background-color: #009999;
+            }
+            .details li {
+                list-style: none;
+            }
+            .tital{
+                text-align:center;
+            }
+            .contant_i{
+                 color: #631e1e;
+                 border-bottom: 1px solid #cea7a7;
             }
             #page-preloader {
                 position: fixed;
@@ -66,7 +57,7 @@
         </style>    
     </head>
     
-    <body background="images/bgIndex.jpg" style="background-attachment: fixed; background-size: 100%;">
+    <body background="../images/bgDoctor.jpeg" style="background-attachment: fixed; background-size: 100%;">
         <div id="page-preloader">
             <div class="spinner container">
                  <div class="row">
@@ -80,7 +71,7 @@
                      </div>
                  </div>
              </div>
-        </div>
+        </div>      
         <!-- MENU -->
         <nav class="navbar navbar-default nb" role="navigation">
           <div class="container-fluid">
@@ -89,7 +80,7 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                   </button>
-              <a class="navbar-brand" href="#">EUROmed</a>
+              <a class="navbar-brand" href="../index.html">EUROmed</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -116,65 +107,6 @@
           </div><!-- /.container-fluid -->
         </nav>
         
-        <!-- SLIDER -->
-        <div id="mycarousel" class="carousel slide" data-ride="carousel" style="z-index: 1; margin-top: 0px;">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#mycarousel" data-slide-to="1"></li>
-              <li data-target="#mycarousel" data-slide-to="2"></li>
-              <li data-target="#mycarousel" data-slide-to="3"></li>
-              <li data-target="#mycarousel" data-slide-to="4"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item">
-                  <img src="images/image1.jpg" data-color="lightblue" alt="First Image">
-                  <div class="carousel-caption">
-                      <h4>We care about your health, not about our pocket</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image2.jpg" data-color="firebrick" alt="Second Image">
-                  <div class="carousel-caption">
-                      <h4>We have the best technologies</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image3.jpg" data-color="violet" alt="Third Image">
-                  <div class="carousel-caption">
-                      <h4>We have the best specialists</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image4.jpg" data-color="lightgreen" alt="Fourth Image">
-                  <div class="carousel-caption">
-                      <h4>Only respect for patients</h4>
-                  </div>
-              </div>
-              <div class="item">
-                  <img src="images/image5.jpg" data-color="tomato" alt="Fifth Image">
-                  <div class="carousel-caption">
-                      <h4>Only original medicines</h4>
-                  </div>
-              </div>
-            </div>
-
-            <!-- Controls--> 
-            <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <div id="doctors" style="margin-top: 50px; text-align: center; width: 100%;">
-            <p></p>
-            <p class="label" align="center">Our doctors</p>  
-        </div>
         <div class="main" style="margin-top: 0;">
             <!-- NAVIGATOR -->
             <div id="wrapper">
@@ -189,7 +121,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#doctors">Doctors</a>
+                            <a href="../index.html#doctors">Doctors</a>
                         </li>
                         <li>
                             <a href="/Hospital/view/appointment.html">Appointments</a>
@@ -217,8 +149,18 @@
                         <div class="row">
                             <div class="col-lg-12 col-lg-offset-0">
                                 
-                                <div id="doctor" class="col-lg-12 "></div> 
+                                <div class="container">    
+                                    <div id="doctor" class="jumbotron" style="padding-bottom: 30px;"></div>
+                                </div> 
                                 
+                                <div class="clearfix"><br /></div>
+                                <div class="container">
+                                    <div id="fancy-list-group">
+                                      <div class="row">                                          
+                                        <div id="appointment" class="list-group"></div>
+                                      </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -230,35 +172,8 @@
         </div>
         
         <!--  ================================================== -->
-        <script src="lib/js/jquery.min.js"></script>
-        <script src="lib/js/bootstrap.min.js"></script>
-        <script>
-            var $item = $('.carousel .item'); 
-            var $wHeight = $(window).height();
-            $item.eq(0).addClass('active');
-            $item.height($wHeight); 
-            $item.addClass('full-screen');
-
-            $('.carousel img').each(function() {
-              var $src = $(this).attr('src');
-              var $color = $(this).attr('data-color');
-              $(this).parent().css({
-                'background-image' : 'url(' + $src + ')',
-                'background-color' : $color
-              });
-              $(this).remove();
-            });
-
-            $(window).on('resize', function (){
-              $wHeight = $(window).height();
-              $item.height($wHeight);
-            });
-
-            $('.carousel').carousel({
-              interval: 6000,
-              pause: "false"
-            });
-        </script>
+        <script src="../lib/js/jquery.min.js"></script>
+        <script src="../lib/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function () {
               var trigger = $('.hamburger'),
@@ -290,6 +205,11 @@
             });
         </script>
         <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+        <script>
             $(window).on('load', function () {
                 var $preloader = $('#page-preloader'),
                     $spinner   = $preloader.find('.spinner');
@@ -297,11 +217,18 @@
                 $preloader.delay(350).fadeOut('slow');
             });
         </script>
-        <script>                       
+        <script>
             window.onload = function ()
             {
-                var controller = new DoctorController();
-                controller.getAllDoctorView();
+                var url = new URL(document.location.href);
+                var id = url.searchParams.get("id");
+                var doctor_id = id;
+                
+                var doctorController = new DoctorController();
+                doctorController.getDoctorByIdView(id);
+                
+                var appointmentController = new AppointmentController();
+                appointmentController.getAppointmentByDoctorIdView(doctor_id);
             };
         </script>
     </body>

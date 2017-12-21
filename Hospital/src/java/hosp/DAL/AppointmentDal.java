@@ -34,6 +34,14 @@ public class AppointmentDal extends BaseDal {
          return appointment;
     }
     
+    public List<Appointment> selectByDoctorId(int doctor_id)
+    {
+         SqlSession session = sqlSessionFactory.openSession(); 
+         List<Appointment> list= session.selectList("appointment.selectByDoctorId",doctor_id);
+         session.close();
+         return list;
+    }
+    
     public int update(Appointment appointment)
     {
          SqlSession session = sqlSessionFactory.openSession(); 

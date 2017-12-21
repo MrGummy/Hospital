@@ -51,7 +51,7 @@ public class PatientDalTest {
     public void testInsert() {
         System.out.println("PatientDal insert");
         Date date = new Date(1974, 11, 30);
-        Patient patient = new Patient(8 ,"Меньшов Гавриил Парфёнович", date);
+        Patient patient = new Patient(0 ,"Меньшов Гавриил Парфёнович", date);
         PatientDal instance = new PatientDal();
         int result = instance.update(patient);
         assertTrue(result!=0 && result==1);
@@ -64,7 +64,7 @@ public class PatientDalTest {
     public void testUpdate() {
         System.out.println("PatientDal update");
         Date date = new Date(1974, 11, 30);
-        Patient patient = new Patient(8, "Меньшов Гавриил Прокофьевич", date);
+        Patient patient = new Patient(0, "Меньшов Гавриил Прокофьевич", date);
         PatientDal instance = new PatientDal();
         int result = instance.insert(patient);
         assertTrue(result!=0 && result==1);
@@ -76,7 +76,7 @@ public class PatientDalTest {
     @Test
     public void testDelete() {
         System.out.println("PatientDal deleteById");
-        int id = 8;
+        int id = 0;
         PatientDal instance = new PatientDal();
         int result = instance.delete(id);
         assertTrue(result!=0 && result==1);
