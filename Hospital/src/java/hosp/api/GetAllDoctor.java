@@ -22,8 +22,9 @@ public class GetAllDoctor extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) 
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        try (PrintWriter out = response.getWriter())
         {
             DoctorController doctorController = new DoctorController();
             List<Doctor> list= doctorController.getAllDoctor();

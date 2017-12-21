@@ -1,7 +1,48 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+class AppointmentService
+{
+    getAllAppointment()
+    {
+         var request = new XMLHttpRequest();
+         request.open('GET', '/Hospital/GetAllAppointment', false);
+         request.send();
+         if (request.status != 200)  {
+              alert( request.status + ': ' + request.statusText ); 
+         } 
+         else    {
+             var appointmentList= JSON.parse(request.responseText );
+             return appointmentList;
+         }
+         return null;
+    }
+    
+    getAppointmentById(id)
+    {
+         var request = new XMLHttpRequest();
+         request.open('GET', '/Hospital/GetAppointmentById?id=' + id, false);
+         request.send();
+         if (request.status != 200)  {
+              alert( request.status + ': ' + request.statusText ); 
+         } 
+         else    {
+             var appointment= JSON.parse(request.responseText );
+             return appointment;
+         }
+         return null;
+    }
+    
+    getAppointmentByDoctorId(id)
+    {
+         var request = new XMLHttpRequest();
+         request.open('GET', '/Hospital/GetAppointmentByDoctorId?doctor_id=' + id, false);
+         request.send();
+         if (request.status != 200)  {
+              alert( request.status + ': ' + request.statusText ); 
+         } 
+         else    {
+             var appointmentList= JSON.parse(request.responseText );
+             return appointmentList;
+         }
+         return null;
+    }
+}
 
