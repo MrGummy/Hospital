@@ -39,8 +39,7 @@ class DoctorController
                                             "<p><br></p>"+        
                                             "<div class='col-lg-offset-1 list-enquiry'>"+
                                                 "<ul>"+
-                                                "<li class='btn btn-md btn-warning'><a onclick='makeAppointment(" + id + ")' href='#appointment' style='color: #fff; text-decoration: none;'><i class='fa fa-star-o' aria-hidden='true'></i> Make an appointment</a> </li>"+
-                                                "<li class='btn btn-md btn-warning'><a href='#message' style='color: #fff; text-decoration: none;'><i class='fa fa-commenting-o' aria-hidden='true'></i> Send message</a> </li>"+			
+                                                "<li onclick='makeAppointment(" + id + ")' class='btn btn-md btn-warning'><a href='#appointment' style='color: #fff; text-decoration: none;'><i class='fa fa-star-o' aria-hidden='true'></i> Make an appointment</a> </li>"+			
                                                 "</ul>"+
                                             "</div>"+
                                         "</div>"+
@@ -79,8 +78,7 @@ class DoctorController
                       "</div>"+
                       "<div class='list-enquiry' style='text-align: right;'>"+
                           "<ul>"+
-                          "<li class='btn btn-md btn-warning'><a onclick='makeAppointment(" + id + ")' href='#appointment' style='color: #fff; text-decoration: none;'><i class='fa fa-star-o' aria-hidden='true'></i> Make an appointment</a> </li>"+
-                          "<li class='btn btn-md btn-warning'><a href='#message' style='color: #fff; text-decoration: none;'><i class='fa fa-commenting-o' aria-hidden='true'></i> Send message</a> </li>"+			
+                          "<li onclick='makeAppointment(" + id + ")' class='btn btn-md btn-warning'><a href='#appointment' style='color: #fff; text-decoration: none;'><i class='fa fa-star-o' aria-hidden='true'></i> Make an appointment</a> </li>"+		
                           "</ul>"+
                       "</div>"+
                   "</div>"+
@@ -89,47 +87,52 @@ class DoctorController
                   "<div class='form-group row'>"+
                     "<div class='col-md-12'>"+                    
                     "<div class='form-group' style='border-bottom:1px solid black'>"+
-                        "<h2>CONTACT INFO</h2>"+
+                        "<h2>INFO</h2>"+
                     "</div>"+
                     "</div>"+
                   "</div>"+
                 "</div>"+
                 "<div class='row'>"+
-                 "<div class='col-md-4'>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Height(feet):</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Weight(lbs):</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Hair Color:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Hair Length:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Suit/Dress:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                 "</div>"+
-                 "<div class='col-md-4'>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Shirt Size:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Shoe Size:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Bust:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Waist:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Inseam:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                 "</div>"+
-                 "<div class='col-md-4'>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Hips:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Glove:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
-                    "<div class='col-sm-6 col-xs-6 tital ' >Hat:</div><div class='col-sm-6 col-xs-6 contant_i'>Prasad</div>"+
-                    "<div class='clearfix'></div><div class='bot-border'></div>"+
+                 "<div class='col-md-12'>"+
+                    "<p>A Doctor of Medicine (MD from Latin Medicinae Doctor) is a medical degree, the meaning of"+
+                        "which varies between different jurisdictions. In some countries, the MD denotes a first professional"+
+                        "graduate degree awarded upon initial graduation from medical school. In other countries, the MD"+
+                        "denotes an academic research doctorate, higher doctorate, honorary doctorate or advanced clinical"+
+                        "coursework degree restricted to medical graduates; in those countries, the equivalent first"+
+                        "professional degree is titled differently (for example, Bachelor of Medicine, Bachelor of Surgery in"+
+                        "countries following the tradition of the United Kingdom) </p>"+
                  "</div>"+
                 "</div>";
         
         var element =document.getElementById("doctor");
         element.innerHTML = result;
+    }
+    
+    authentication()
+    {
+        var authUserName=document.getElementById("inputlogin").value;
+        var authPassword=document.getElementById("inputpass").value;
+        
+        authUserName=authUserName.toLowerCase();
+        
+        var data=this.getAllDoctor();
+        for(var i=0; i<data.length;i++)
+        {
+            var userName=data[i].user_name;
+            var password=data[i].password;
+            if (authUserName == userName && authPassword == password)
+            {
+                /*document.getElementById("user").value = userName;
+                document.getElementById("cancel").click();*/
+                
+                var element =document.getElementById("success");
+                element.innerHTML = "<a href='#' onclick='doctorClick(" + data[i].id + ")'><h3>" + userName + "</h3></a>";
+                
+                return 1;
+            }                
+        }
+        
+        //document.getElementById("userName").value = "ERROR!!!!!!!";
+        return 0;
     }
 }

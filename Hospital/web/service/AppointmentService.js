@@ -21,7 +21,7 @@ class AppointmentService
          request.open('GET', '/Hospital/GetAppointmentById?id=' + id, false);
          request.send();
          if (request.status != 200)  {
-              alert( request.status + ': ' + request.statusText ); 
+              alert( request.status + ': !!!' + id + '!!! ' + request.statusText ); 
          } 
          else    {
              var appointment= JSON.parse(request.responseText );
@@ -41,6 +41,36 @@ class AppointmentService
          else    {
              var appointmentList= JSON.parse(request.responseText );
              return appointmentList;
+         }
+         return null;
+    }
+    
+    insertAppointment(json)
+    {
+         var request = new XMLHttpRequest();
+         request.open('GET', '/Hospital/InsertAppointment?json=' + json, false);
+         request.send();
+         if (request.status != 200)  {
+              alert( request.status + ': ' + request.statusText ); 
+         } 
+         else    {
+             var count= request.responseText;
+             return count;
+         }
+         return null;
+    }  
+    
+    updateAppointment(json)
+    {
+         var request = new XMLHttpRequest();
+         request.open('GET', '/Hospital/UpdateAppointment?json=' + json, false);
+         request.send();
+         if (request.status != 200)  {
+              alert( request.status + ': ' + request.statusText ); 
+         } 
+         else    {
+             var count= request.responseText;
+             return count;
          }
          return null;
     }

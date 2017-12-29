@@ -19,22 +19,22 @@ public class Doctor {
     private String specialization;
     private String number_phone;
     private byte[] photo;
+    private String user_name;
+    private String password;
     
     public Doctor() {
     }
 
-    public Doctor(int id, String fio, String specialization, String number_phone, byte[] photo) {
+    public Doctor(int id, String fio, String specialization, String number_phone, byte[] photo, String user_name, String password) {
         this.id = id;
         this.fio = fio;
         this.specialization = specialization;
         this.number_phone = number_phone;
         this.photo = photo;
+        this.user_name = user_name;
+        this.password = password;
     }
 
-    Doctor(int i, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public int getId() {
         return id;
     }
@@ -53,6 +53,14 @@ public class Doctor {
 
     public byte[] getPhoto() {
         return photo;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setId(int id) {
@@ -75,14 +83,24 @@ public class Doctor {
         this.photo = photo;
     }
 
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + this.id;
-        hash = 23 * hash + Objects.hashCode(this.fio);
-        hash = 23 * hash + Objects.hashCode(this.specialization);
-        hash = 23 * hash + Objects.hashCode(this.number_phone);
-        hash = 23 * hash + Arrays.hashCode(this.photo);
+        int hash = 3;
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + Objects.hashCode(this.fio);
+        hash = 53 * hash + Objects.hashCode(this.specialization);
+        hash = 53 * hash + Objects.hashCode(this.number_phone);
+        hash = 53 * hash + Arrays.hashCode(this.photo);
+        hash = 53 * hash + Objects.hashCode(this.user_name);
+        hash = 53 * hash + Objects.hashCode(this.password);
         return hash;
     }
 
@@ -101,13 +119,19 @@ public class Doctor {
         if (this.id != other.id) {
             return false;
         }
-        if (this.number_phone != other.number_phone) {
-            return false;
-        }
         if (!Objects.equals(this.fio, other.fio)) {
             return false;
         }
         if (!Objects.equals(this.specialization, other.specialization)) {
+            return false;
+        }
+        if (!Objects.equals(this.number_phone, other.number_phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.user_name, other.user_name)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
             return false;
         }
         if (!Arrays.equals(this.photo, other.photo)) {
@@ -118,6 +142,6 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return "Doctor{" + "id=" + id + ", fio=" + fio + ", specialization=" + specialization + ", number_phone=" + number_phone + ", photo=" + photo + '}';
+        return "Doctor{" + "id=" + id + ", fio=" + fio + ", specialization=" + specialization + ", number_phone=" + number_phone + ", photo=" + photo + ", user_name=" + user_name + ", password=" + password + '}';
     }
 }

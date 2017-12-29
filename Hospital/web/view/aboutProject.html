@@ -9,9 +9,9 @@
         <link href="../lib/css/style.css" rel="stylesheet">
         <link href="../navigator.css" rel="stylesheet"/>
         <link href="../doctorContainer.css" rel="stylesheet"/>
-        <link href="doctor.css" rel="stylesheet"/>
         <link href="../preloader.css" rel="stylesheet"/>
         <link href="../footer.css" rel="stylesheet"/>
+        <link href="aboutProject.css" rel="stylesheet"/>
         <script src="../controllers/DoctorController.js"></script>
         <script src="../controllers/AppointmentController.js"></script>
         <script src="../controllers/PatientController.js"></script>
@@ -19,40 +19,16 @@
         <script src="../service/AppointmentService.js"></script>
         <script src="../service/PatientService.js"></script>
         <script src="../service/StateService.js"></script>
-        <script>              
+        <script>
             function doctorClick(id) {
                 document.location.href = "/Hospital/view/doctor.html?id="+id;
             }
             function makeAppointment(doctor_id) {
                 document.location.href = "/Hospital/view/appointment.html?id="+doctor_id;
             }
-            function getState(id) {                
-                var url = new URL(document.location.href);
-                var doctor_id = url.searchParams.get("id");
-                
-                var controller = new AppointmentController();
-                controller.getAllStateView(id);
-                
-                var saveChanges = document.getElementById("saveChanges");
-                var fun = function(){ 
-                                        var count = controller.updateAppointmentDB(id); 
-                                        if (count == 1){
-                                            document.getElementById("close").click();
-                                            document.getElementById("modal").click();
-                                            controller.getAppointmentByDoctorIdView(doctor_id); 
-                                        } 
-                                        saveChanges.removeEventListener("click", fun, false); 
-                                    };
-                
-                saveChanges.addEventListener("click", fun, false);
-            }
             function authen() {
                 var doctorController = new DoctorController();
                 doctorController.authentication(); 
-            }
-            function showAppointment(id) {
-                var appointmentController = new AppointmentController();
-                appointmentController.outAppointment(id);
             }
             function loginClick()
             {   
@@ -84,6 +60,11 @@
             }
         </script>
         <style>
+            .full-screen {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
             .nb { 
                 position: fixed;
                 opacity: 0.9;
@@ -96,16 +77,11 @@
                 background-color: #009999;
                 border: none;
                 border-radius: 0;
-            }
-            .details li {
-                list-style: none;
-            }
-            .tital{
-                text-align:center;
-            }
-            .contant_i{
-                 color: #631e1e;
-                 border-bottom: 1px solid #cea7a7;
+            }   
+            .label { 
+                text-align: center;
+                font-size: 3em;
+                background-color: #009999;
             }
             #page-preloader {
                 position: fixed;
@@ -116,10 +92,33 @@
                 background: #eee;
                 z-index: 100500;
             }
+            .center {
+                margin-top:50px;   
+            }
+
+            .modal-header {
+                    padding-bottom: 5px;
+            }
+
+            .modal-footer {
+                    padding: 0;
+                    }
+
+            .modal-footer .btn-group button {
+                    height:40px;
+                    border-top-left-radius : 0;
+                    border-top-right-radius : 0;
+                    border: none;
+                    border-right: 1px solid #ddd;
+            }
+
+            .modal-footer .btn-group:last-child > button {
+                    border-right: 0;
+            }
         </style>    
     </head>
     
-    <body background="../images/bgDoctor.jpeg" style="background-attachment: fixed; background-size: 100%;">
+    <body background="../images/bgAboutProject.jpg" style="background-attachment: fixed; background-size: 100%;">
         <div id="page-preloader">
             <div class="spinner container">
                  <div class="row">
@@ -153,24 +152,6 @@
             </div>
         </div>
         
-        <div id="modal" data-toggle="modal" data-target="#Modal"></div>
-        
-        <div class="modal fade success-popup" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-              <div class="modal-content">
-                <div class="modal-content" style="opacity: 0.9; padding: 10px; text-align: center; background-color: #269926;">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                  <h3 class="modal-title" id="myModalLabel">SUCCESS!</h3>
-                </div>
-                <div class="modal-body text-center">
-                    <p class="lead">The state of the appointment was successfully changed.</p>
-                    <div id="success"></div>
-                </div>                
-
-              </div>
-            </div>
-        </div>
-        
          <!-- line modal -->
         <!--div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -197,7 +178,7 @@
                         <div class="modal-footer">
                                 <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                                         <div class="btn-group" role="group">
-                                                <button style="color: #000;" type="button" class="btn btn-default" id="cancel" data-dismiss="modal"  role="button">Cancel</button>
+                                                <button style="color: #000;" type="button" class="btn btn-default" data-dismiss="modal" id="cancel" role="button">Cancel</button>
                                         </div>
                                         <div class="btn-group" role="group">
                                                 <button onclick="authen()" style="color: #000;" type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Log in</button>
@@ -208,58 +189,6 @@
           </div>
         </div-->
         
-        <div class="modal" id="changeAppointment" tabindex="-1" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 align="center" class="modal-title">Edit Appointment</h4>
-              </div>
-              <div class="modal-body" style="margin-bottom: 60px;">                
-                <div class="form-group">
-                    <label for="appointmentDate" class="col-sm-4 control-label">Date of Appointment</label>
-                    <div class="col-sm-6">
-                        <input type="date" id="appointment_date" class="form-control" style="margin-bottom: 10px;">
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 10px;">
-                    <label for="state" class="col-sm-4 control-label">State</label>
-                    <div class="col-sm-6">
-                        <select id="state" class='form-control'>
-                        </select>
-                    </div>
-                </div> <!-- /.form-group -->
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="close" data-dismiss="modal" style="background-color: #b9121b;">Close</button>
-                <button id="saveChanges" type="button" class="btn btn-primary" style="background-color: #269926;">Save changes</button>
-                <div id="debug"></div>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div>
-         
-         <div class="modal" id="showAppointment" tabindex="-1" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h4 align="center" class="modal-title">Data of Appointment</h4>
-              </div>
-              <div class="modal-body">                
-                <div class="form-group">
-                    <ul id="params">
-                    </ul>
-                </div> <!-- /.form-group -->
-              </div>
-              <div class="modal-footer">
-                <button id="saveChanges" type="button" class="btn btn-default" data-dismiss="modal" style="background-color: #269926;">OK</button>
-                <div id="debug"></div>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div>
-
         <!-- MENU -->
         <nav class="navbar navbar-default nb" role="navigation">
           <div class="container-fluid">
@@ -274,14 +203,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                  <li class="active"><a href="/Hospital/index.html#doctors">Doctors</a></li>
+                  <li class="active"><a href="#doctors">Doctors</a></li>
                 <li><a href="/Hospital/view/appointment.html">Appointments</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">About us <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><a href="/Hospital/view/developers.html">Developers</a></li>
                     <li class="divider"></li>
-                    <li><a href="/Hospital/view/aboutProject.html">About project</a></li>
+                    <li><a href="#">About project</a></li>
                   </ul>
                 </li>
               </ul>
@@ -295,6 +224,7 @@
         </nav>
         
         <div class="main" style="margin-top: 0;">
+           
             <!-- NAVIGATOR -->
             <div id="wrapper">
                 <div class="overlay"></div>
@@ -308,7 +238,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Hospital/index.html#doctors">Doctors</a>
+                            <a href="#doctors">Doctors</a>
                         </li>
                         <li>
                             <a href="/Hospital/view/appointment.html">Appointments</a>
@@ -318,7 +248,7 @@
                           <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">Dropdown heading</li>
                             <li><a href="/Hospital/view/developers.html">Developers</a></li>
-                            <li><a href="/Hospital/view/aboutProject.html">About project</a></li>
+                            <li><a href="#">About project</a></li>
                           </ul>
                         </li>
                     </ul>
@@ -336,18 +266,109 @@
                         <div class="row">
                             <div class="col-lg-12 col-lg-offset-0">
                                 
-                                <div class="container">    
-                                    <div id="doctor" class="jumbotron" style="padding-bottom: 30px;"></div>
-                                </div> 
-                                
-                                <div class="clearfix"><br /></div>
-                                <div class="container">
-                                    <div id="fancy-list-group">
-                                      <div class="row">                                          
-                                        <div id="appointment" class="list-group"></div>
-                                      </div>
+                                <section>
+                                    <div class="padding80 bgcolor4" id="about">
+                                        <div class= "container"> 
+                                            <div class= "row">
+                                                <div class="col-md-4">
+                                                     <div class="textbox-component">
+                                                        <img src="../images/logo2.png" style=" max-height: 350px;" alt=" " class="img-responsive pull-right" >
+                                                     </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="divider50"></div>
+                                                    <div class="textbox-component">
+                                                        <h2>Brief description of the field of application</h2>
+                                                        The product is intended for use by all Internet users who wish to make 
+                                                        an appointment for a particular doctor at the specified date, as well as 
+                                                        for all doctor users to manage their records for admission (the doctor 
+                                                        may mark the entry as accepted, rejected, completed if the doctor does not 
+                                                        takes no action, the record remains unchecked).
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </section>
+
+                                <section>
+                                    <div class="padding80 bgcolor3" id="about">
+                                        <div class= "container"> 
+                                            <div class= "row">
+                                                <div class="col-md-4">
+                                                    <div class="textbox-component">
+                                                        <img src="../images/logo2.png" style=" max-height: 350px;" alt=" " class="img-responsive pull-right" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="divider50"></div>
+                                                    <div class="textbox-component">
+                                                        <h2>Functional purpose</h2>
+                                                        <p>The functional purpose of the product is to provide users with: 
+                                                            in the face of patients, the ability to record for admission to 
+                                                            a particular doctor in the specified date, informing the patient 
+                                                            about the services provided by the hospital, and in the person of
+                                                            doctors ability to manage records in your account.</p>
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="padding80 bgcolor2" id="about">
+                                        <div class= "container"> 
+                                            <div class= "row">
+                                                <div class="col-md-6">
+                                                    <div class="divider50"></div>
+                                                    <div class="textbox-component">
+                                                        <h2>Operational purpose</h2>
+                                                        The product must be operated on the Internet.
+                                                        End users of the product should be:
+                                                        <ul>
+                                                            <li>potential users-patients who wish to make an appointment for a particular doctor;</li>
+                                                            <li>potential users-doctors who accept patients;</li>
+                                                            <li>administrator who has the ability to edit and add data to the site.</li>
+                                                        </ul>
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="textbox-component">
+                                                        <img src="../images/logo2.png" style=" max-height: 350px;" alt=" " class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section>
+                                    <div class="padding80 bgcolor1" id="about" style="margin-bottom: 20px;">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="divider10"></div>
+                                                    <h2>About us</h2>
+                                                    <p>This project was developed within the disciplines: "Project Management"and 
+                                                        "Web-programming", with the aim of updating and acquiring skills in working 
+                                                         with technology web programming and experience in the field of software project 
+                                                         management.
+                                                         Completed: Medvedev R.E. and Martynenko E.V.
+                                                         Omsk State Technical University</p>
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <img src="https://p.w3layouts.com/demos_new/28-01-2017/inspire-demo_Free/2047128721/web/images/11.jpg" alt=" " class="img-responsive">
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
                             </div>
                         </div>
                     </div>
@@ -359,7 +380,7 @@
         </div>
         
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <div class="footer-section" style="margin-top: 40px;">
+        <div class="footer-section">
             <div class="footer">
                 <div class="container">
                         <div class="col-md-4 footer-four">
@@ -417,6 +438,33 @@
         <script src="../lib/js/jquery.min.js"></script>
         <script src="../lib/js/bootstrap.min.js"></script>
         <script>
+            var $item = $('.carousel .item'); 
+            var $wHeight = $(window).height();
+            $item.eq(0).addClass('active');
+            $item.height($wHeight); 
+            $item.addClass('full-screen');
+
+            $('.carousel img').each(function() {
+              var $src = $(this).attr('src');
+              var $color = $(this).attr('data-color');
+              $(this).parent().css({
+                'background-image' : 'url(' + $src + ')',
+                'background-color' : $color
+              });
+              $(this).remove();
+            });
+
+            $(window).on('resize', function (){
+              $wHeight = $(window).height();
+              $item.height($wHeight);
+            });
+
+            $('.carousel').carousel({
+              interval: 6000,
+              pause: "false"
+            });
+        </script>
+        <script>
             $(document).ready(function () {
               var trigger = $('.hamburger'),
                   overlay = $('.overlay'),
@@ -447,11 +495,6 @@
             });
         </script>
         <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
-        <script>
             $(window).on('load', function () {
                 var $preloader = $('#page-preloader'),
                     $spinner   = $preloader.find('.spinner');
@@ -460,18 +503,8 @@
             });
         </script>
         <script>
-            window.onload = function ()
+            window.onload = function () 
             {
-                var url = new URL(document.location.href);
-                var id = url.searchParams.get("id");
-                var doctor_id = id;
-                
-                var doctorController = new DoctorController();
-                doctorController.getDoctorByIdView(id);
-                
-                var appointmentController = new AppointmentController();
-                appointmentController.getAppointmentByDoctorIdView(doctor_id);
-                
                 document.getElementById("inputlogin").value = getCookie("login");
                 document.getElementById('inputpass').value = getCookie("password");
                 if (document.getElementById("inputlogin").value == "undefined" && document.getElementById('inputpass').value == "undefined")
@@ -497,7 +530,9 @@
                   "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
                 ));
                 return matches ? decodeURIComponent(matches[1]) : undefined;
-            };
+            }
         </script>
     </body>
 </html>
+
+

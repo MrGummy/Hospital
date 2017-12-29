@@ -9,6 +9,8 @@
        <result property = "specialization" column = "specialization"/>
        <result property = "number_phone" column = "number_phone"/>
        <result property = "photo" column = "photo"/>
+       <result property = "user_name" column = "user_name"/>
+       <result property = "password" column = "password"/>
     </resultMap> 
  
     <select id = "selectAll" resultMap = "result"> 
@@ -28,7 +30,9 @@
         fio = #{fio}, 
         specialization = #{specialization}, 
         number_phone = #{number_phone},
-        photo = #{photo}
+        photo = #{photo},
+        user_name = #{user_name},
+        password = #{password}
         WHERE id = #{id}; 
     </update> 
   
@@ -37,7 +41,7 @@
     </delete> 
 
     <insert id = "insert" parameterType = "hosp.model.Doctor"> 
-       INSERT INTO doctor (fio, specialization, number_phone, photo)  
-       VALUES (#{fio}, #{specialization}, #{number_phone}, #{photo});     
+       INSERT INTO doctor (fio, specialization, number_phone, photo, user_name, password)  
+       VALUES (#{fio}, #{specialization}, #{number_phone}, #{photo}, #{user_name}, #{password});     
     </insert>
 </mapper> 
