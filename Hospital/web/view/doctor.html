@@ -26,42 +26,27 @@
             function makeAppointment(doctor_id) {
                 document.location.href = "/Hospital/view/appointment.html?id="+doctor_id;
             }
-<<<<<<< HEAD
-            function getState(id) {                
-                var url = new URL(document.location.href);
-                var doctor_id = url.searchParams.get("id");
-                
-=======
             function getState(id) {
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
                 var controller = new AppointmentController();
                 controller.getAllStateView(id);
+                
+                var url = new URL(document.location.href);
+                var app_id = url.searchParams.get("id");
+                var doctor_id = app_id;
                 
                 var saveChanges = document.getElementById("saveChanges");
                 var fun = function(){ 
                                         var count = controller.updateAppointmentDB(id); 
-                                        if (count == 1){
+                                        if (count == 1)
+                                        {                                          
                                             document.getElementById("close").click();
-<<<<<<< HEAD
-                                            document.getElementById("modal").click();
-                                            controller.getAppointmentByDoctorIdView(doctor_id); 
+                                            document.getElementById("modal").click();  
+                                            controller.getAppointmentByDoctorIdView(doctor_id);
                                         } 
                                         saveChanges.removeEventListener("click", fun, false); 
                                     };
-                
-=======
-                                            document.getElementById("modal").click();        
-                                        } 
-                                        saveChanges.removeEventListener("click", fun, false); 
-                                    };
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
                 saveChanges.addEventListener("click", fun, false);
             }
-            function authen() {
-                var doctorController = new DoctorController();
-                doctorController.authentication(); 
-            }
-<<<<<<< HEAD
             function showAppointment(id) {
                 var appointmentController = new AppointmentController();
                 appointmentController.outAppointment(id);
@@ -94,8 +79,6 @@
                document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
                 location.reload();                
             }
-=======
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
         </script>
         <style>
             .nb { 
@@ -186,11 +169,8 @@
         </div>
         
          <!-- line modal -->
-<<<<<<< HEAD
         <!--div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-=======
         <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
           <div class="modal-dialog">
                 <div class="modal-content">
                         <div class="modal-header">
@@ -199,11 +179,7 @@
                         </div>
                         <div class="modal-body">
 
-<<<<<<< HEAD
                     <!-- content goes here 
-=======
-                    <!-- content goes here -->
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
                                 <form>
                       <div class="form-group">
                         <label for="exampleInputEmail1">User Name</label>
@@ -228,11 +204,8 @@
                         </div>
                 </div>
           </div>
-<<<<<<< HEAD
-        </div-->
-=======
         </div>
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
+        </div-->
         
         <div class="modal" id="changeAppointment" tabindex="-1" role="dialog">
           <div class="modal-dialog">
@@ -264,7 +237,6 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
-<<<<<<< HEAD
          
          <div class="modal" id="showAppointment" tabindex="-1" role="dialog">
           <div class="modal-dialog">
@@ -286,8 +258,6 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
-=======
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
 
         <!-- MENU -->
         <nav class="navbar navbar-default nb" role="navigation">
@@ -314,15 +284,10 @@
                   </ul>
                 </li>
               </ul>
-<<<<<<< HEAD
                 <div class="navbar-form navbar-right" role="search" id="logBut">
                     <input style="width: 150px; height: 30px;" type="text" class="form-control" id="inputlogin"/>
                     <input style="width: 150px; height: 30px;" type="password" class="form-control" id="inputpass"/>
                     <input onclick="loginClick()" type="submit" class="btn btn-default" value="Log in" style="background-color: #269926;"/>
-=======
-                <div class="navbar-form navbar-right" role="search">
-                    <input id="user" data-toggle='modal' data-target='#squarespaceModal' type="submit" class="btn btn-default" value="Log in" style="background-color: #269926;"/>
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
                 </div>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -393,11 +358,8 @@
         </div>
         
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<<<<<<< HEAD
         <div class="footer-section" style="margin-top: 40px;">
-=======
         <div class="footer-section">
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
             <div class="footer">
                 <div class="container">
                         <div class="col-md-4 footer-four">
@@ -523,14 +485,16 @@
                 var conroller = new DoctorController(); 
                 var count = conroller.authentication();  
                 
-                if(count==1){                    
+                if(count==1)
+                {                    
                     document.getElementById('inputlogin').style.display = 'none';
                     document.getElementById('inputpass').style.display = 'none';
                     var element = document.getElementById("logBut");
                     element.innerHTML = button;
                 }
             }
-                function getCookie(name) {
+            function getCookie(name) 
+            {
                 var matches = document.cookie.match(new RegExp(
                   "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
                 ));

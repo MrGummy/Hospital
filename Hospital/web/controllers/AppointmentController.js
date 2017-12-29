@@ -49,14 +49,11 @@ class AppointmentController
         return this.patientService.getAllPatient();
     }
     
-<<<<<<< HEAD
     getPatientById(id)
     {
         return this.patientService.getPatientById(id);
     }
     
-=======
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
     insertAppointment(json)
     {
         return this.appointmentService.insertAppointment(json);
@@ -154,15 +151,9 @@ class AppointmentController
                           "<div class='list-group-item-controls'>"+
                             "<span class='label' style='background-color: " + color + ";'>" + state.name + "</span>"+
                             "<div class='btn-group'>"+
-<<<<<<< HEAD
                               "<a onclick='makeAppointment(" + doctor.id + ")' href='#' class='app1' data-toggle='tooltip' data-placement='top' title='Add'><span class='glyphicon glyphicon-plus'></span></a>"+
                               "<a onclick='showAppointment(" + id + ")' href='' class='app2'  data-toggle='modal' data-target='#showAppointment' data-placement='top' title='View'><span class='glyphicon glyphicon-eye-open'></span></a>"+
                               "<a onclick='getState(" + id + ")' href='' class='app3' data-toggle='modal' data-target='#changeAppointment' title='Settings'><span class='glyphicon glyphicon-cog'></span></a>"+
-=======
-                              "<a onclick='makeAppointment(" + doctor.id + ")' href='#' data-toggle='tooltip' data-placement='top' title='Add'><span class='glyphicon glyphicon-plus'></span></a>"+
-                              "<a href='#' data-toggle='tooltip' data-placement='top' title='View'><span class='glyphicon glyphicon-eye-open'></span></a>"+
-                              "<a onclick='getState(" + id + ")' href='' data-toggle='modal' data-target='#changeAppointment' title='Settings'><span class='glyphicon glyphicon-cog'></span></a>"+
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
                             "</div>"+
                           "</div>"+
                         "</li>"+
@@ -297,7 +288,6 @@ class AppointmentController
         
         return count;
     }
-<<<<<<< HEAD
     
     outAppointment(id)
     {
@@ -319,8 +309,6 @@ class AppointmentController
         var element =document.getElementById("params");
         element.innerHTML = result;
     }
-=======
->>>>>>> ec1389b4d303552ba5723afcc0e60286a42182ff
 }
 
 
