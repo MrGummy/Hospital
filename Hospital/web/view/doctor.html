@@ -11,14 +11,39 @@
         <link href="../doctorContainer.css" rel="stylesheet"/>
         <link href="doctor.css" rel="stylesheet"/>
         <link href="../preloader.css" rel="stylesheet"/>
+        <link href="../footer.css" rel="stylesheet"/>
         <script src="../controllers/DoctorController.js"></script>
         <script src="../controllers/AppointmentController.js"></script>
+        <script src="../controllers/PatientController.js"></script>
         <script src="../service/DoctorService.js"></script>
         <script src="../service/AppointmentService.js"></script>
+        <script src="../service/PatientService.js"></script>
         <script src="../service/StateService.js"></script>
-        <script>            
+        <script>              
+            function doctorClick(id) {
+                document.location.href = "/Hospital/view/doctor.html?id="+id;
+            }
             function makeAppointment(doctor_id) {
                 document.location.href = "/Hospital/view/appointment.html?id="+doctor_id;
+            }
+            function getState(id) {
+                var controller = new AppointmentController();
+                controller.getAllStateView(id);
+                
+                var saveChanges = document.getElementById("saveChanges");
+                var fun = function(){ 
+                                        var count = controller.updateAppointmentDB(id); 
+                                        if (count == 1){
+                                            document.getElementById("close").click();
+                                            document.getElementById("modal").click();        
+                                        } 
+                                        saveChanges.removeEventListener("click", fun, false); 
+                                    };
+                saveChanges.addEventListener("click", fun, false);
+            }
+            function authen() {
+                var doctorController = new DoctorController();
+                doctorController.authentication(); 
             }
         </script>
         <style>
@@ -71,7 +96,112 @@
                      </div>
                  </div>
              </div>
-        </div>      
+        </div>
+        
+        <div id="modalWindow" data-toggle="modal" data-target="#myModal"></div>
+        
+        <div class="modal fade success-popup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-content" style="opacity: 0.9; padding: 10px; text-align: center; background-color: #269926;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title" id="myModalLabel">SUCCESS!</h3>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="lead">You are logged in as user:</p>
+                    <div id="success"></div>
+                </div>                
+
+              </div>
+            </div>
+        </div>
+        
+        <div id="modal" data-toggle="modal" data-target="#Modal"></div>
+        
+        <div class="modal fade success-popup" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-content" style="opacity: 0.9; padding: 10px; text-align: center; background-color: #269926;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  <h3 class="modal-title" id="myModalLabel">SUCCESS!</h3>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="lead">The state of the appointment was successfully changed.</p>
+                    <div id="success"></div>
+                </div>                
+
+              </div>
+            </div>
+        </div>
+        
+         <!-- line modal -->
+        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                <h3 align="center" class="modal-title" id="lineModalLabel">Log in</h3>
+                        </div>
+                        <div class="modal-body">
+
+                    <!-- content goes here -->
+                                <form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">User Name</label>
+                        <input type="email" class="form-control" id="userName" placeholder="Enter user name">
+                      </div>
+                      <div style="margin-bottom: 10px;" class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                      </div>
+                    </form>
+
+                        </div>
+                        <div class="modal-footer">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                                        <div class="btn-group" role="group">
+                                                <button style="color: #000;" type="button" class="btn btn-default" id="cancel" data-dismiss="modal"  role="button">Cancel</button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                                <button onclick="authen()" style="color: #000;" type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Log in</button>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+          </div>
+        </div>
+        
+        <div class="modal" id="changeAppointment" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 align="center" class="modal-title">Edit Appointment</h4>
+              </div>
+              <div class="modal-body" style="margin-bottom: 60px;">                
+                <div class="form-group">
+                    <label for="appointmentDate" class="col-sm-4 control-label">Date of Appointment</label>
+                    <div class="col-sm-6">
+                        <input type="date" id="appointment_date" class="form-control" style="margin-bottom: 10px;">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="state" class="col-sm-4 control-label">State</label>
+                    <div class="col-sm-6">
+                        <select id="state" class='form-control'>
+                        </select>
+                    </div>
+                </div> <!-- /.form-group -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="close" data-dismiss="modal" style="background-color: #b9121b;">Close</button>
+                <button id="saveChanges" type="button" class="btn btn-primary" style="background-color: #269926;">Save changes</button>
+                <div id="debug"></div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+
         <!-- MENU -->
         <nav class="navbar navbar-default nb" role="navigation">
           <div class="container-fluid">
@@ -91,18 +221,15 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">About us <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Developers</a></li>
+                    <li><a href="/Hospital/view/developers.html">Developers</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">About project</a></li>
+                    <li><a href="/Hospital/view/aboutProject.html">About project</a></li>
                   </ul>
                 </li>
               </ul>
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                <div class="navbar-form navbar-right" role="search">
+                    <input id="user" data-toggle='modal' data-target='#squarespaceModal' type="submit" class="btn btn-default" value="Log in" style="background-color: #269926;"/>
                 </div>
-                <button type="submit" class="btn btn-default">Search</button>
-              </form>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
@@ -130,8 +257,8 @@
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">About us <span class="caret"></span></a>
                           <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">Dropdown heading</li>
-                            <li><a href="#">Developers</a></li>
-                            <li><a href="#">About project</a></li>
+                            <li><a href="/Hospital/view/developers.html">Developers</a></li>
+                            <li><a href="/Hospital/view/aboutProject.html">About project</a></li>
                           </ul>
                         </li>
                     </ul>
@@ -169,6 +296,61 @@
 
             </div>
             <!-- /#wrapper -->
+        </div>
+        
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="footer-section">
+            <div class="footer">
+                <div class="container">
+                        <div class="col-md-4 footer-four">
+                               <h5>Contact Us</h5>
+                               <p>Feel free to reach us</p>
+                                 <div class="foot-address">
+                                  <ul>
+                            <li><i class="fa fa-map-marker"></i>pr. Mira, 11, Omsk, Omsk reg., 644050 </li>
+                            <li><i class="fa fa-envelope-o"></i>kontrolyor@inbox.ru, 
+                                                                    general_gon@mail.ru </li>
+                            <li><i class="fa fa-phone"></i>+89378347334 </li>
+
+                          </ul>
+                         </div> 
+                            </div>
+
+                            <div class="col-md-3 footer-two col-md-offset-1">
+                               <h5>About us</h5>
+                                  <ul>
+                            <li><a href="/Hospital/view/aboutProject.html"> About Project</a> </li>
+                            <li><a href="/Hospital/view/developers.html"> Developers</a> </li>
+                          </ul>
+
+                            </div>
+                            <div class="col-md-3 footer-three">
+                               <h5>Services</h5>
+                                  <ul>
+                            <li><a href="/Hospital/index.html#doctors"> Doctors</a> </li>
+                            <li><a href="/Hospital/view/appointment.html"> Appointments</a> </li>
+                          </ul>
+
+                            </div>
+                            <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <div class="copyright-text">
+                            <p>CopyRight © 2017 EUROmed All Rights Reserved</p>
+                        </div>
+                    </div> <!-- End Col -->
+                    <div class="col-sm-6  ">
+                        <div class="copyright-text pull-right">
+                            <p> <a href="/Hospital/index.html">Home</a></p>
+                        </div>					
+                    </div> <!-- End Col -->
+                </div>
+            </div>
         </div>
         
         <!--  ================================================== -->
