@@ -34,10 +34,10 @@
     <build>
          <outputDirectory>target2</outputDirectory>
           <finalName>ROOT</finalName>
-         <sourceDirectory>src/java/hosp</sourceDirectory>
+         <sourceDirectory>Hospital/src/java/hosp</sourceDirectory>
             <resources>
                 <resource>
-                    <directory>${basedir}/src/java/hosp/mybatis</directory>
+                    <directory>Hospital/src/java/hosp/mybatis</directory>
                     <includes>
                     <include>config.properties</include>
                     </includes>
