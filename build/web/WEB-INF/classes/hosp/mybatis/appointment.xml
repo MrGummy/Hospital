@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="appointment"> 
+ 
+    <resultMap id = "result" type = "hosp.model.Appointment"> 
+       <result property = "id" column = "id"/> 
+       <result property = "patient_id" column = "patient_id"/>
+       <result property = "doctor_id" column = "doctor_id"/>
+       <result property = "date" column = "date"/>
+       <result property = "state_id" column = "state_id"/>
+    </resultMap> 
+    
+    <select id = "selectAll" resultMap = "result"> 
+       SELECT * FROM appointment;  
+    </select> 
+
+    <select id = "selectById" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM appointment WHERE id = #{id}; 
+    </select> 
+    
+    <select id = "selectByDoctorId" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM appointment WHERE doctor_id = #{doctor_id}; 
+    </select> 
+    
+    <select id = "selectPatient" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM patient WHERE id = #{patient_id}; 
+    </select> 
+    
+    <select id = "selectDoctor" parameterType = "int" resultMap = "result"> 
+       SELECT * FROM doctor WHERE id = #{doctor_id}; 
+    </select> 
+
+    <update id = "update" parameterType = "hosp.model.Appointment"> 
+       UPDATE appointment SET 
+        date = #{date},
+        state_id = #{state_id}
+        WHERE id = #{id}; 
+    </update> 
+  
+    <delete id = "deleteById" parameterType = "int"> 
+       DELETE FROM appointment WHERE id = #{id}; 
+    </delete> 
+
+    <insert id = "insert" parameterType = "hosp.model.Appointment"> 
+       INSERT INTO appointment (patient_id, doctor_id, date, state_id)  
+       VALUES (#{patient_id}, #{doctor_id}, #{date}, #{state_id});     
+    </insert>
+</mapper> 

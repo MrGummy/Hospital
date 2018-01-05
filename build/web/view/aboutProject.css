@@ -1,0 +1,45 @@
+.bgcolor4{
+    background:#daffa0;
+}
+
+.bgcolor3 {
+    background:#42c8f4;
+}
+
+/**************************
+Example body text
+*************************/
+.textbox-component {
+    position: relative;
+}
+.bgcolor2 {
+    background:#f48c42;
+}
+.padding80 {
+    padding:80px;
+}
+.divider50 {
+    height: 50px;
+}
+/**************************
+About us 
+*************************/
+
+.bgcolor1 {
+    background:#fffcf2;
+}
+.padding80 {
+    padding:80px;
+}
+.divider10 {
+    height: 50px;
+}
+hr { 
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0px;
+}
