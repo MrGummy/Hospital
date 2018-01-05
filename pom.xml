@@ -4,51 +4,34 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.springframework</groupId>
     <artifactId>gs-maven</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>0.1.0</version>
 
+    <!-- tag::joda[] -->
     <dependencies>
-         <dependency>
-              <groupId>junit</groupId>
-              <artifactId>junit</artifactId>
-              <version>4.4</version>
-              <scope>test</scope>
-         </dependency>
-         <dependency>
-              <groupId>org.mybatis-3.4.5</groupId>
-              <artifactId>mybatis-3.4.5</artifactId>
-              <version>3.4.5</version>
-         </dependency>
-         <dependency>
-              <groupId>org.mysql-connector-java-5.1.23-bin</groupId>
-              <artifactId>mysql-connector-java-5.1.23-bin</artifactId>
-              <version>5.1.23</version>
-         </dependency>
-	 <dependency>
-              <groupId>org.jackson-all-1.9.0</groupId>
-              <artifactId>jackson-all-1.9.0</artifactId>
-              <version>1.9.0</version>
-         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.2</version>
+        </dependency>
     </dependencies>
+    <!-- end::joda[] -->
 
     <build>
-         <outputDirectory>target2</outputDirectory>
-          <finalName>ROOT</finalName>
-         <sourceDirectory>Hospital/src/java/hosp</sourceDirectory>
-            <resources>
-                <resource>
-                    <directory>Hospital/src/java/hosp/mybatis</directory>
-                    <includes>
-                    <include>config.properties</include>
-                    </includes>
-                </resource>
-            </resources>
-                 <plugins>
-                     <plugin>
-                         <groupId>org.apache.maven.plugins</groupId>
-                         <artifactId>maven-pmd-plugin</artifactId>
-                         <version>2.4</version>
-                     </plugin>
-                 </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>
